@@ -1,12 +1,13 @@
 <h1>Contacts</h1>
 
 <ul *ngFor="let contact of contacts">
-  <li *ngIf="contact.firstName == 'John' && contact.lastName == 'Doe'">
+  <li>
     <p>
       Name: {{ contact.firstName }} {{ contact.lastName }}
     </p>
     <p>
       Email: {{ contact.email }}
     </p>
+    <button (click)="remove(contact)">Remove</button>
   </li>
 </ul>
