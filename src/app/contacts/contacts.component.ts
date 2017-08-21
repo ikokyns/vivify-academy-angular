@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
 })
 export class ContactsComponent {
 
+  private contact = {
+    firstName: 'John',
+    lastName:  'Doe',
+    email:     'john@example.com'
+  };
+
   constructor() { }
 
 }
