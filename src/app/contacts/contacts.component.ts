@@ -6,12 +6,26 @@ import { Component } from '@angular/core';
 })
 export class ContactsComponent {
 
-  private contact = {
-    firstName: 'John',
-    lastName:  'Doe',
-    email:     'john@example.com'
-  };
+  private contacts: any[];
 
-  constructor() { }
+  constructor() {
+    this.contacts = [
+      {
+        firstName: 'John',
+        lastName:  'Doe',
+        email:     'john@example.com'
+      },
+      {
+        firstName: 'Daniel',
+        lastName:  'Ros',
+        email:     'daniel@example.com'
+      },
+      {
+        firstName: 'Martin',
+        lastName:  'Hess',
+        email:     'martin@example.com'
+      }
+    ];
+  }
 
 }
