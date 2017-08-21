@@ -24,7 +24,12 @@ export class ContactsComponent {
         firstName: 'Martin',
         lastName:  'Hess',
         email:     'martin@example.com'
-      }
+      },
+      {
+        firstName: 'John',
+        lastName:  'Deere',
+        email:     'john.deere@example.com'
+      },
     ];
   }
 
