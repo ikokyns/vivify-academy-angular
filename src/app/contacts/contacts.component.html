@@ -1,7 +1,7 @@
 <h1>Contacts</h1>
 
 <ul *ngFor="let contact of contacts">
-  <li *ngIf="contact.firstName == 'John'">
+  <li *ngIf="contact.firstName == 'John' && contact.lastName == 'Doe'">
     <p>
       Name: {{ contact.firstName }} {{ contact.lastName }}
     </p>
