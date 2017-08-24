@@ -1,5 +1,10 @@
 <h1>Contacts</h1>
 
+<div class="input-group col-md-5 pl-0 my-lg-4 my-2">
+  <span class="input-group-addon">Filter by name</span>
+  <input [(ngModel)]="filter" type="text" class="form-control"/>  
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts">
+    <tr *ngFor="let contact of contacts | filter : 'firstName' : filter">
       <td class="align-middle">
         <a [routerLink]="['/contacts', contact.id]">
           {{ contact.firstName }} {{ contact.lastName }}
