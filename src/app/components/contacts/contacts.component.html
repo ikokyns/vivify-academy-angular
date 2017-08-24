@@ -15,7 +15,7 @@
           {{ contact.firstName }} {{ contact.lastName }}
         </a>
         </td>
-      <td class="align-middle">{{ contact.email }}</td>
+      <td class="align-middle">{{ contact.email | uppercase | lowercase }}</td>
       <td><button class="btn btn-danger btn-sm" (click)="remove(contact)">Remove</button></td>
     </tr>
 </table>
