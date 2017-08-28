@@ -30,7 +30,7 @@ export class ContactsComponent {
   addContact(newContact: Contact) {
     this.contactsService.addContact( newContact ).
     subscribe(
-      contact=>{
+      contact => {
        this.contacts.push(contact);
        this.newContact = new Contact();
       }
