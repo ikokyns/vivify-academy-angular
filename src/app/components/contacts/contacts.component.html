@@ -1,5 +1,21 @@
 <h1>Contacts</h1>
 
+<form #contactForm="ngForm">
+  <div class="form-group">
+    <label>First name</label>
+    <input name="firstName" required #firstName [(ngModel)]="newContact.firstName" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Last name</label>
+    <input name="lastName" required #lastName [(ngModel)]="newContact.lastName" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Email address</label>
+    <input name="email" required #email [(ngModel)]="newContact.email" type="text" class="form-control">
+  </div>
+  <button type="button" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="addContact( newContact )">Add Contact</button>
+</form>
+
 <div class="input-group col-md-5 pl-0 my-lg-4 my-2">
   <span class="input-group-addon">Filter by name</span>
   <input [(ngModel)]="filter" type="text" class="form-control"/>  
@@ -14,19 +30,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts | filter : 'firstName' : filter">
+    <tr *ngFor="let contact of contacts">
       <td class="align-middle">
         <a [routerLink]="['/contacts', contact.id]">
           {{ contact.firstName }} {{ contact.lastName }}
         </a>
         </td>
-      <td class="align-middle">{{ contact.email | uppercase | lowercase }}</td>
-      <td><button class="btn btn-danger btn-sm" (click)="remove(contact)">Remove</button></td>
+      <td class="align-middle">{{ contact.email }}</td>
+      <td><button class="btn btn-danger btn-sm" (click)="remove ( contact )">Remove</button></td>
     </tr>
 </table>
 
+<!--
 <div class="input-group col-md-5 pl-0 my-lg-4 my-2">
 <button type="button" class="btn btn-primary" (click)="addContact()">Add Contact</button>
-</div>
+</div>-->
 
 <router-outlet></router-outlet>
