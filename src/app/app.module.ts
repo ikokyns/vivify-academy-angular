@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing-module';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule} from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation'
 
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
@@ -23,7 +24,8 @@ import { ContactDetailsComponent } from './components/contacts/contact-details/c
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
