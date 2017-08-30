@@ -24,4 +24,6 @@ export class ContactFormComponent {
     // this.newContact = contact;
     this.newContact = Object.assign({}, contact);
   }
+
+  
 }
