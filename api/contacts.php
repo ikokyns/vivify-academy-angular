@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 
 $contacts = array(
     array(
-        "id" => 1,
+    "id" => 1,
     "firstName" => 'John',
     "lastName" => 'Doe',
     "email" => 'john@example.com'

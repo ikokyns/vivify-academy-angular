@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Contact } from '../models/contact.model'
+import { Contact } from '../models/contact.model';
 
 @Injectable()
 export class ContactsService {
@@ -13,10 +13,19 @@ export class ContactsService {
 
   public addContact(contact: Contact){
   	return this.http.post('http://localhost:8000/contacts-add.php', {
-  		firstName: contact.firstName,
+      firstName: contact.firstName,
   		lastName: contact.lastName,
   		email: contact.email
   	});
+  }
+
+  public editContact(contact: Contact){
+    return this.http.put('http://localhost:8000/contacts-edit.php', {
+      id: contact.id,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email
+      });
   }
 
 }

@@ -27,14 +27,29 @@ export class ContactsComponent {
     this.contacts.splice(index, 1);
   }
 
-  addContact(newContact: Contact) {
-    this.contactsService.addContact( newContact ).
-    subscribe(
-      contact => {
-       this.contacts.push(contact);
-       this.newContact = new Contact();
-      }
-     );
+  submitContact(contact: Contact) {
+    if (contact.id) {
+      this.contactsService.editContact(contact).
+      subscribe(
+        (contact: Contact) => {
+          let existingContact = this.contacts.filter(c => c.id == contact.id);
+          if (existingContact.length) {
+            Object.assign(existingContact[0], contact);
+          }
+        }
+       );
+
+    } else {
+      this.contactsService.addContact(contact).
+      subscribe(
+        contact => {
+         this.contacts.push(contact);
+         // this.newContact = new Contact();
+        }
+       );
+    }
+
+
   }
 
 }
