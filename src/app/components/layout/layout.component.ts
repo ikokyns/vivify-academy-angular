@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageTitleService } from '../../shared/services/page-title.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class LayoutComponent {
 
-  constructor() { }
+	private title: string;
+
+	constructor(private pageTitleService: PageTitleService) {
+		this.pageTitleService.pageTitleAnnounced$.subscribe(
+			(title: string) => {
+				this.title = title;
+			});
+	}
+
 
 
 }

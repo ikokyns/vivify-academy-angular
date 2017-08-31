@@ -11,7 +11,7 @@ import { Observable, Observer } from 'rxjs';
 export class ContactsComponent {
 
   private contacts: any = [];
-  private filter: string = '';
+  private filter: String = '';
   private newContact: Contact = new Contact();
   private people: Observable<any>;
 
@@ -22,12 +22,6 @@ export class ContactsComponent {
     (err: HttpErrorResponse) => {
       alert(`Backend returned code ${err.status} with message: ${err.error}`);
     });
-
-    this.people = Observable.of([
-      {name: 'Joe'},
-      {name: 'Bob'},
-      {name: 'Susy'}
-      ]);
   }
 
   // constructor(private contactsService: ContactsService) {
