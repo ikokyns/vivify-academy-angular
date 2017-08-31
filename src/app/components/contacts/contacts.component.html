@@ -20,13 +20,22 @@
   <tbody>
     <tr *ngFor="let contact of contacts; let i=index"
       [contactRow]="contact"
+      [index]="i"
       (onEdit)="contactForm.edit(contact)" 
-      (onRemove)="contactForm.remove(contact)"
-      [index]="i">
+      (onRemove)="remove(contact)"
+      >
 
     </tr>
 
 </table>
+
+<h3>People:</h3>
+
+<ul>
+  <li *ngFor="let person of people | async">
+    {{ person.name }}
+  </li>
+</ul>
 
 <!--
 <div class="input-group col-md-5 pl-0 my-lg-4 my-2">

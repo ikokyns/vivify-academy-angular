@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ContactsService } from '../../shared/services/contacts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Contact } from '../../shared/models/contact.model';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -12,6 +13,7 @@ export class ContactsComponent {
   private contacts: any = [];
   private filter: string = '';
   private newContact: Contact = new Contact();
+  private people: Observable<any>;
 
   constructor(private contactsService: ContactsService) {
     contactsService.getContacts().subscribe(data => {
@@ -20,11 +22,35 @@ export class ContactsComponent {
     (err: HttpErrorResponse) => {
       alert(`Backend returned code ${err.status} with message: ${err.error}`);
     });
+
+    this.people = Observable.of([
+      {name: 'Joe'},
+      {name: 'Bob'},
+      {name: 'Susy'}
+      ]);
   }
+
+  // constructor(private contactsService: ContactsService) {
+  //   this.contacts = contactsService.getContacts();
+   
+  //   this.people = Observable.of([
+  //     {name: 'Joe'},
+  //     {name: 'Bob'},
+  //     {name: 'Susy'}
+  //     ]);
+  // }
 
   remove(contact) {
     const index = this.contacts.indexOf(contact);
-    this.contacts.splice(index, 1);
+    // this.contacts.splice(index, 1);
+
+    this.contactsService.removeContact(contact)
+    .subscribe(
+      (contact: Contact) => {
+        const index = this.contacts.indexOf(contact);
+        this.contacts.splice(index, 1);
+      }
+    )
   }
 
   submitContact(contact: Contact) {

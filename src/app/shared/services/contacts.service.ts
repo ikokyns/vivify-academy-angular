@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Contact } from '../models/contact.model';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable()
 export class ContactsService {
@@ -26,6 +27,15 @@ export class ContactsService {
       lastName: contact.lastName,
       email: contact.email
       });
+  }
+
+  removeContact (contact: Contact){
+    return new Observable((o: Observer<any>) => {
+      setTimeout(() => {
+        o.next(contact);
+        return o.complete();
+      }, 5000);
+    });
   }
 
 }

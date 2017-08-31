@@ -25,5 +25,4 @@ export class ContactFormComponent {
     this.newContact = Object.assign({}, contact);
   }
 
-  
 }
