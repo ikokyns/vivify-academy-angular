@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { ContactsService } from '../../shared/services/contacts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Contact } from '../../shared/models/contact.model';
@@ -15,8 +15,12 @@ export class ContactsComponent {
   private newContact: Contact = new Contact();
   private people: Observable<any>;
 
-  constructor(private contactsService: ContactsService) {
-    contactsService.getContacts().subscribe(data => {
+  private contactService: ContactsService;
+
+  //constructor(private contactsService: ContactsService) {
+  constructor(private injector: Injector) {
+    this.contactService = this.injector.get(ContactsService);
+    this.contactService.getContacts().subscribe(data => {
       this.contacts = data;
     },
     (err: HttpErrorResponse) => {
@@ -33,6 +37,9 @@ export class ContactsComponent {
   //     {name: 'Susy'}
   //     ]);
   // }
+
+
+  private contactsService: ContactsService;
 
   remove(contact) {
     const index = this.contacts.indexOf(contact);

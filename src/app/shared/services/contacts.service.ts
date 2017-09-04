@@ -29,7 +29,7 @@ export class ContactsService {
       });
   }
 
-  removeContact (contact: Contact){
+  public removeContact (contact: Contact){
     return new Observable((o: Observer<any>) => {
       setTimeout(() => {
         o.next(contact);

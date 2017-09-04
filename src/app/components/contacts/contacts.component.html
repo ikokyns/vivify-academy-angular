@@ -18,12 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts; let i=index"
-      [contactRow]="contact"
-      [index]="i"
-      (onEdit)="contactForm.edit(contact)" 
-      (onRemove)="remove(contact)"
-      >
+    <tr *ngFor="let contact of contacts; let i=index" [contactRow]="contact" [index]="i" (onEdit)="contactForm.edit(contact)" (onRemove)="remove(contact)">
 
     </tr>
 

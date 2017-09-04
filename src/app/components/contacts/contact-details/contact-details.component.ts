@@ -15,6 +15,7 @@ export class ContactDetailsComponent implements OnInit {
 	constructor(private route:ActivatedRoute, private contactsService: ContactsService, private pageTitleService: PageTitleService) { }
 
 	ngOnInit() {
+		// console.log('EEEEE');
 		this.route.params.subscribe(() => {
 			let id = parseInt(this.route.snapshot.paramMap.get('id'));
 		this.contact = [];
@@ -25,4 +26,8 @@ export class ContactDetailsComponent implements OnInit {
 		});
 	});
 	}
+
+	// ngOnDestroy(){
+	// 	console.log('AAAAAA')
+	// }
 }
